@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package com.idm.proto;
+
+option java_package = "com.idm.proto";
+
+service AuthService {
+  rpc AuthenticateUser(AuthenticationRequest) returns (AuthenticationResponse);
+  rpc ValidateToken(TokenValidationRequest) returns (TokenValidationResponse);
+  rpc DestroyToken(DestroyTokenRequest) returns (DestroyTokenResponse);
+}
+
+message AuthenticationRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message AuthenticationResponse {
+  string token = 1;
+}
+
+message TokenValidationRequest {
+  string token = 1;
+}
+
+message TokenValidationResponse {
+  string sub = 1;
+  string role = 2;
+  string message=3;
+}
+message DestroyTokenRequest {
+  string token = 1;
+}
+
+message DestroyTokenResponse {
+  string message = 2;
+}
+
+service UserService{
+  rpc getUserById(GetUserRequest) returns (GetUserResponse);
+  rpc createUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc editUser(EditUserRequest) returns (EditUserResponse);
+  rpc deleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+
+}
+message GetUserRequest {
+  uint64 id=1;
+}
+
+message GetUserResponse {
+  string username = 1;
+  string password = 2;
+  string role=3;
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string password = 2;
+  string role=3;
+}
+
+message CreateUserResponse {
+  string success = 1;
+  uint64 id=2;
+
+}
+
+message EditUserRequest {
+  uint64 id=1;
+  string username = 2;
+  string password = 3;
+  string role=4;
+}
+
+message EditUserResponse {
+  string success = 1;
+}
+
+message DeleteUserRequest {
+  uint64 id = 1;
+}
+
+message DeleteUserResponse {
+  string success = 1;
+}

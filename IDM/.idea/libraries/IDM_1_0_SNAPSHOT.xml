@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="IDM-1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/IDMServer/target/IDM-1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
